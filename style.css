@@ -4,12 +4,23 @@ html, body, main{
     margin: 0
 }
 
+body{
+    background-image: url('./bg-cassinoVegas.png');
+    background-size: cover;
+}
+
 main{
 
 }
 
+.container{
+    display: flex;
+    align-items: center;
+}
+
 .container_jogo{
     display: flex;
+    background-image: none;
 
 }
 
