@@ -1,21 +1,32 @@
 
 html, body, main{
     padding: 0;
-    margin: 0
+    margin: 0;
+    height: 100vh;
 }
 
 body{
     background-image: url('./bg-cassinoVegas.png');
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 main{
+    background-image: url('./estruturajackpot.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 300px;
 
 }
 
 .container{
     display: flex;
+    height: 100vh;
     align-items: center;
+    justify-content: center;
+    margin-left: 52px;
+    padding-top: 74px;
+    box-sizing: border-box;
 }
 
 .container_jogo{
@@ -25,5 +36,17 @@ main{
 }
 
 .jogo_caixa{
-    margin: 0 10px;
+    margin: 0 4px;
 }
+
+.container_jogo_alavanca{
+    height: 200px;
+    width: 60px;
+    background-color: transparent;
+    border: none;
+    background-image: url('./mao-alavanca.png');
+    background-size: cover;
+    cursor: pointer;
+}
+
+

@@ -15,35 +15,57 @@ const caixa2 = document.querySelector('#caixa2')
 const caixa3 = document.querySelector('#caixa3')
 const alavanca = document.querySelector('#alavanca')
 
-let position = 0
-let sorteio1 = 0
-let sorteio2 = 0
-let sorteio3 = 0
-let i = 0
-let timer = 900
+
+let altura = 97.46
+let largura = 64.33
 
 const estruturaCacaNiquel = () => {
 
-    caixa1.style.width = '120px'
-    caixa1.style.height = '360px'
+
+    caixa1.style.width = `${largura}px`
+    caixa1.style.height = `${altura}px`
     caixa1.style.backgroundImage = "url(icones.png)"
     caixa1.style.backgroundSize = 'cover'
+    caixa1.style.backgroundPosition = 'center'
     
     
-    caixa2.style.width = '120px'
-    caixa2.style.height = '360px'
+    caixa2.style.width = `${largura}px`
+    caixa2.style.height = `${altura}px`
     caixa2.style.backgroundImage = "url(icones.png)"
     caixa2.style.backgroundSize = 'cover'
+    caixa2.style.backgroundPosition = 'center'
     
+    caixa3.style.width = `${largura}px`
+    caixa3.style.height = `${altura}px`
     caixa3.style.backgroundImage = "url(icones.png)"
-    caixa3.style.width = '120px'
-    caixa3.style.height = '360px'
     caixa3.style.backgroundSize = 'cover'
+    caixa3.style.backgroundPosition = 'center'
+
+}
+
+const baixaLavanca = () => {
+
+    alavanca.style.transform = 'translateY(40px)'
+
+}
+
+const sobeLavanca = () => {
+
+    alavanca.style.transform = 'translateY(0px)'
 
 }
 
 
 const startGame = () => {
+
+    baixaLavanca()
+
+    let position = 0
+    let sorteio1 = 0
+    let sorteio2 = 0
+    let sorteio3 = 0
+    let i = 0
+    let timer = 900
     // desativa o botão de rodar o game
     alavanca.disabled = true
 
@@ -59,6 +81,7 @@ const startGame = () => {
     
     // seta estrutura da rolagem
     estruturaCacaNiquel()
+    
 
 
     // sorteia em cada variável a posição de parada
@@ -70,18 +93,25 @@ const startGame = () => {
     rodaGame = setInterval(() => {
         
         if (i !== 194) {
+            
             position = 10 * i * 2.5
             caixa1.style.backgroundPosition = `center ${position}px`
-            caixa2.style.backgroundPosition = `center ${position}px`
+            caixa2.style.backgroundPosition = `center ${-position}px`
             caixa3.style.backgroundPosition = `center ${position}px`
             i++
+
+            if (i === 10){
+                sobeLavanca()
+            }
+
         }
         else {
-            caixa1.style.backgroundPosition = `center ${sorteio1 * 120}px`
-            caixa2.style.backgroundPosition = `center ${sorteio2 * 120}px`
-            caixa3.style.backgroundPosition = `center ${sorteio3 * 120}px`
+            caixa1.style.backgroundPosition = `center ${sorteio1 * largura + 20}px`
+            caixa2.style.backgroundPosition = `center ${sorteio2 * largura + 20}px`
+            caixa3.style.backgroundPosition = `center ${sorteio3 * largura + 20}px`
             clearInterval(rodaGame)
             alavanca.disabled = false
+            
         }
         
     }, timer / 30);
