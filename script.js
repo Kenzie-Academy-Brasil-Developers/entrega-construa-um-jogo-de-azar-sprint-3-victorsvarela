@@ -36,28 +36,29 @@ setInterval(() => {
         console.log(i)
     }
     else{
-        caixa1.style.backgroundPosition = `center ${sorteio1*193}px`
-        caixa2.style.backgroundPosition = `center ${sorteio2*193}px`
-        caixa3.style.backgroundPosition = `center ${sorteio3*193}px`
+        caixa1.style.backgroundPosition = `center ${sorteio1*120}px`
+        caixa2.style.backgroundPosition = `center ${sorteio2*120}px`
+        caixa3.style.backgroundPosition = `center ${sorteio3*120}px`
     }
     
 }, 900/30);
 
 
-caixa1.style.width = '193px'
-caixa1.style.height = '193px'
-caixa1.style.position = 'block'
+caixa1.style.width = '120px'
+caixa1.style.height = '360px'
 caixa1.style.backgroundImage = "url(icones.png)"
+caixa1.style.backgroundSize = 'cover'
 
-caixa2.style.width = '193px'
-caixa2.style.height = '193px'
+
+caixa2.style.width = '120px'
+caixa2.style.height = '360px'
 caixa2.style.backgroundImage = "url(icones.png)"
-caixa2.style.position = 'block'
+caixa2.style.backgroundSize = 'cover'
 
 caixa3.style.backgroundImage = "url(icones.png)"
-caixa3.style.width = '193px'
-caixa3.style.height = '193px'
-caixa3.style.position = 'block'
+caixa3.style.width = '120px'
+caixa3.style.height = '360px'
+caixa3.style.backgroundSize = 'cover'
 
 
 console.log('fim do código')
