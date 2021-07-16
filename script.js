@@ -78,7 +78,7 @@ const apagaDerrota = () => {
     body.removeChild(soHarry)
     body.removeChild(btnJogarNovamente)
 
-    console.log('cheguei ate aqui')
+    //console.log('cheguei ate aqui')
 
 }
 
@@ -191,7 +191,7 @@ const startGame = () => {
             caixa1.style.backgroundPosition = `center ${sorteio1 * largura + 20}px`
             caixa2.style.backgroundPosition = `center ${sorteio2 * largura + 20}px`
             caixa3.style.backgroundPosition = `center ${sorteio3 * largura + 20}px`
-            condicaoVitoria(1, 1, 1)
+            condicaoVitoria(sorteio1, sorteio2, sorteio3)
             clearInterval(rodaGame)
             alavanca.disabled = false
             
