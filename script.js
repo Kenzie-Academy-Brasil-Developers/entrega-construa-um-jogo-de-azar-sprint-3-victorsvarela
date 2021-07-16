@@ -19,6 +19,7 @@ const alavanca = document.querySelector('#alavanca')
 const valdemort = document.createElement('img')
 const derrota = new Audio()
 const btnJogarNovamente = document.createElement('button')
+const soHarry = document.createElement('video')
 
 
 let altura = 97.46
@@ -64,30 +65,74 @@ const apagaDerrota = () => {
 
     valdemort.classList.remove('valdemort')
     btnJogarNovamente.classList.remove('btnJogarNovamente')
+    
+    //body.remove(msgDerrota)
+    body.removeChild(valdemort)
+    body.removeChild(btnJogarNovamente)
+    
+
+    soHarry.classList.remove('soHarry')
+    btnJogarNovamente.classList.remove('btnJogarNovamente')
+
+    //body.removeChild(msgVitoria)
+    body.removeChild(soHarry)
+    body.removeChild(btnJogarNovamente)
+
+    console.log('cheguei ate aqui')
 
 }
+
+//const apagaVitoria = () => {
+//}
 
 
 const condicaoVitoria = (sorteio1, sorteio2, sorteio3) => {
 
-    if ((sorteio1 !== sorteio2) && (sorteio1 !== sorteio3) && (sorteio2 !== sorteio3)){
+    if (sorteio1 !== sorteio2 || sorteio1 !== sorteio3 || sorteio2 !== sorteio3){ 
         
+        const msgDerrota = document.createElement('span')
+        
+        msgDerrota.innerText = 'Derrota'
+        msgDerrota.classList.add('vitoria')
+
         valdemort.src = "./valdemort-derrota.jpg"
         valdemort.classList.add('valdemort')
         
-        
-        body.appendChild(valdemort)
         derrota.src = "./audio-avadakedavraptbr.m4a"
-        derrota.autoplay = 'true'
-
-        body.appendChild(btnJogarNovamente)
+        derrota.autoplay = true
+        
+        btnJogarNovamente.innerText = 'Jogar Novamente'
         btnJogarNovamente.classList.add('btnJogarNovamente')
         
+        body.appendChild(msgDerrota)
+        body.appendChild(valdemort)
+        body.appendChild(btnJogarNovamente)
+        
     }
+    else {
+        const msgVitoria = document.createElement('span')
+        
+        msgVitoria.innerText = 'Vitória'
+        msgVitoria.classList.add('vitoria')
 
+        soHarry.src = './soharrycut.mp4'
+        soHarry.muted = false
+        soHarry.classList.add('soHarry')
+        soHarry.autoplay = true
+        
+        btnJogarNovamente.innerText = 'Jogar Novamente'
+        btnJogarNovamente.classList.add('btnJogarNovamente')
+        
+        body.appendChild(msgVitoria)
+        body.appendChild(soHarry)
+        body.appendChild(btnJogarNovamente)
+    }
+    
+    
     console.log(sorteio1, sorteio2, sorteio3)
     
 }
+
 
 
 
@@ -146,7 +191,7 @@ const startGame = () => {
             caixa1.style.backgroundPosition = `center ${sorteio1 * largura + 20}px`
             caixa2.style.backgroundPosition = `center ${sorteio2 * largura + 20}px`
             caixa3.style.backgroundPosition = `center ${sorteio3 * largura + 20}px`
-            condicaoVitoria(sorteio1, sorteio2, sorteio3)
+            condicaoVitoria(1, 1, 1)
             clearInterval(rodaGame)
             alavanca.disabled = false
             
@@ -161,5 +206,6 @@ const startGame = () => {
 
 estruturaCacaNiquel()
 alavanca.addEventListener('click', startGame)
+btnJogarNovamente.addEventListener('click', apagaDerrota)
 
 
