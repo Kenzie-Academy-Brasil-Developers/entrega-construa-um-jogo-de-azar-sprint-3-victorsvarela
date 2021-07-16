@@ -9,11 +9,16 @@
 
 // para aparecer cada imagem, por dentro do FOR timing de reprodução do código de 0.5s
 
-// 
+//
+const body = document.querySelector('body')
 const caixa1 = document.querySelector('#caixa1')
 const caixa2 = document.querySelector('#caixa2')
 const caixa3 = document.querySelector('#caixa3')
 const alavanca = document.querySelector('#alavanca')
+
+const valdemort = document.createElement('img')
+const derrota = new Audio()
+const btnJogarNovamente = document.createElement('button')
 
 
 let altura = 97.46
@@ -54,6 +59,38 @@ const sobeLavanca = () => {
     alavanca.style.transform = 'translateY(0px)'
 
 }
+
+const apagaDerrota = () => {
+
+    valdemort.classList.remove('valdemort')
+    btnJogarNovamente.classList.remove('btnJogarNovamente')
+
+}
+
+
+const condicaoVitoria = (sorteio1, sorteio2, sorteio3) => {
+
+    if ((sorteio1 !== sorteio2) && (sorteio1 !== sorteio3) && (sorteio2 !== sorteio3)){
+        
+        valdemort.src = "./valdemort-derrota.jpg"
+        valdemort.classList.add('valdemort')
+        
+        
+        body.appendChild(valdemort)
+        derrota.src = "./audio-avadakedavraptbr.m4a"
+        derrota.autoplay = 'true'
+
+        body.appendChild(btnJogarNovamente)
+        btnJogarNovamente.classList.add('btnJogarNovamente')
+        
+    }
+
+    console.log(sorteio1, sorteio2, sorteio3)
+    
+}
+
+
+
 
 
 const startGame = () => {
@@ -109,12 +146,14 @@ const startGame = () => {
             caixa1.style.backgroundPosition = `center ${sorteio1 * largura + 20}px`
             caixa2.style.backgroundPosition = `center ${sorteio2 * largura + 20}px`
             caixa3.style.backgroundPosition = `center ${sorteio3 * largura + 20}px`
+            condicaoVitoria(sorteio1, sorteio2, sorteio3)
             clearInterval(rodaGame)
             alavanca.disabled = false
             
         }
         
     }, timer / 30);
+
     
     
     
